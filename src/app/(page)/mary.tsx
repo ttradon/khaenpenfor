@@ -79,8 +79,8 @@ const MaryPage = () => {
                     <Play className="text-white size-10 md:size-30" />    
                 </div>
                 <p className="text-xl md:text-3xl font-bold text-white">Click to start!</p>
-                <div className="flex flex-col justify-center items-center space-y-5">
-                    <div className="ml-7 flex justify-center items-center space-x-5">
+                <div className="flex flex-col justify-center items-end space-y-5 border">
+                    <div className="flex justify-center items-center space-x-5">
                         <p className="text-white font-bold text-md md:text-2xl">YOU : </p>
                         <input onChange={(e) => setUser(e.target.value)} required className="border-2 rounded-md font-bold text-white shadow-md px-5 py-2 text-md md:text-xl" type="text"/>
                     </div>
