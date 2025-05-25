@@ -33,7 +33,7 @@ const MaryPage = () => {
     }
 
     const handleConfetti = () => {
-        axios.post("/api/couple",{ person1:user, person2:crush })
+        axios.post("https://khaenpenfor.vercel.app/api/couple",{ person1:user, person2:crush })
         confetti({
             particleCount: 100,
             spread: 100
