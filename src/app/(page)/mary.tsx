@@ -3,6 +3,7 @@ import { Play } from "lucide-react"
 import Image from "next/image"
 import { useRef, useState } from "react"
 import confetti from "canvas-confetti"
+import axios from "axios"
 
 const MaryPage = () => {
     const [ user,setUser ] = useState("")
@@ -32,6 +33,7 @@ const MaryPage = () => {
     }
 
     const handleConfetti = () => {
+        axios.post("/api/couple",{ person1:user, person2:crush })
         confetti({
             particleCount: 100,
             spread: 100
