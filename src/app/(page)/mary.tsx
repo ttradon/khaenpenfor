@@ -19,7 +19,7 @@ const MaryPage = () => {
         if(user && crush){
             setGo(true)
             if(audioRef.current) {
-                audioRef.current.volume = 0.05
+                audioRef.current.volume = 0.02
                 audioRef.current.play()
             }
         }
@@ -33,7 +33,7 @@ const MaryPage = () => {
     }
 
     const handleConfetti = () => {
-        axios.post("https://khaenpenfor.vercel.app/api/couple",{ person1:user, person2:crush })
+        axios.post(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/couple`,{ person1:user, person2:crush })
         confetti({
             particleCount: 100,
             spread: 100
