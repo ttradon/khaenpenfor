@@ -5,6 +5,8 @@ import { useRef, useState } from "react"
 import confetti from "canvas-confetti"
 
 const MaryPage = () => {
+    const [ user,setUser ] = useState("")
+    const [ crush,setCrush ] = useState("")
     let [ w,setW ] = useState(100)
     let [ h,setH ] = useState(50) 
     let [ fs,setFs ] = useState(24)
@@ -13,10 +15,12 @@ const MaryPage = () => {
     const audioRef = useRef<HTMLAudioElement>(null)
 
     const audioPlay = () => {
-        setGo(true)
-        if(audioRef.current) {
-            audioRef.current.volume = 0.01
-            audioRef.current.play()
+        if(user && crush){
+            setGo(true)
+            if(audioRef.current) {
+                audioRef.current.volume = 0.05
+                audioRef.current.play()
+            }
         }
     }
 
@@ -42,16 +46,22 @@ const MaryPage = () => {
 
   return (
     <div className="">
-        <audio ref={audioRef} src={"/song.mp3"}></audio>
+        <audio ref={audioRef} src={"/pakinson.mp3"}></audio>
         { go ? (
             yes ? (
                 <div className="w-screen h-screen flex flex-col items-center bg-pink-100">
-                    <Image className="size-100 mt-50 animate-dog" src={"/fall.png"} width={1000} height={1000} alt="."/>
+                    <div className="flex justify-center items-center space-x-5 mt-50">
+                        <p className="text-3xl font-bold text-rose-500">{user}</p>
+                        <p className="text-3xl">❤️</p>
+                        <p className="text-3xl font-bold text-rose-500">{crush}</p>
+                    </div>
+                    <Image className="size-100 animate-dog" src={"/fall.png"} width={1000} height={1000} alt="."/>
                     <p className="text-2xl font-[700]">เป็นแฟนกัน ณ วันที่ {date} เวลา {time}</p>
                 </div>
             ) : (
                 <div className="w-screen h-screen flex flex-col items-center bg-amber-100/50">
-                    <Image className="size-100 mr-10 mt-40 animate-dog" src={"/dog.png"} width={1000} height={1000} alt="."/>
+                    <p className="mt-40 text-3xl font-bold text-rose-500">{user}</p>
+                    <Image className="size-100 mr-10 animate-dog" src={"/dog.png"} width={1000} height={1000} alt="."/>
                     <div className="flex mb-10 font-bold text-2xl">
                         <p className="">เป็น</p>
                         <p className="text-pink-700">แฟน</p>
@@ -69,6 +79,16 @@ const MaryPage = () => {
                     <Play size={100} className="text-white" />    
                 </div>
                 <p className="text-3xl font-bold text-white">Click to start!</p>
+                <div className="flex flex-col justify-center items-center space-y-5">
+                    <div className="ml-7 flex justify-center items-center space-x-5">
+                        <p className="text-white font-bold text-2xl">YOU : </p>
+                        <input onChange={(e) => setUser(e.target.value)} required className="border-2 rounded-md font-bold text-white shadow-md px-5 py-2 text-xl" type="text"/>
+                    </div>
+                    <div className="flex justify-center items-center space-x-5">
+                        <p className="text-white font-bold text-2xl">CRUSH : </p>
+                        <input onChange={(e) => setCrush(e.target.value)} required className="border-2 rounded-md font-bold text-white shadow-md px-5 py-2 text-xl" type="text"/>
+                    </div>
+                </div>
             </div>
         )}
         
