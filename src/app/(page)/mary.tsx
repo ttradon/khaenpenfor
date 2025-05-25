@@ -65,7 +65,7 @@ const MaryPage = () => {
                     <div className="flex mb-10 font-bold text-2xl">
                         <p className="">เป็น</p>
                         <p className="text-pink-700">แฟน</p>
-                        <p className="">กั {crush} มั้ย?</p>
+                        <p className="">กับ {crush} มั้ย?</p>
                     </div>
                     <div className="flex justify-center items-center space-x-5">
                         <button onClick={handleConfetti} className="cursor-pointer bg-green-500 text-white font-bold rounded-md hover:bg-green-500/90 animate-bounce" style={{ width: `${200-w}px`, height: `${100-h}px`, fontSize: `${48-fs}px`}}>Yes</button>
