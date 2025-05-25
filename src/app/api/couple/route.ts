@@ -5,8 +5,8 @@ export const GET = async (req: NextRequest) => {
     try {
         const couples = await prisma.couples.findMany()
         return NextResponse.json(couples)
-    } catch (error) {
-
+    } catch (error) {   
+        console.log(error)
     }
 }
 
@@ -17,7 +17,7 @@ export const POST = async (req: NextRequest) => {
             data: { person1,person2 }
         })
         return NextResponse.json("ok")
-    } catch (error) {
-
+    } catch (error) {   
+        console.log(error)
     }
 }

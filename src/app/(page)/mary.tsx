@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useRef, useState } from "react"
 import confetti from "canvas-confetti"
 import axios from "axios"
+import { useMutation } from "@tanstack/react-query"
 
 const MaryPage = () => {
     const [ user,setUser ] = useState("")
@@ -14,6 +15,12 @@ const MaryPage = () => {
     const [ go,setGo ] = useState(false)
     const [ yes,setYes ] = useState(false)
     const audioRef = useRef<HTMLAudioElement>(null)
+
+    const addCouple = useMutation({
+        mutationFn: async ({ person1,person2 }: { person1: string, person2: string }) => {
+            return await axios.post("/api/couple",{ person1,person2 })
+        }
+    })
 
     const audioPlay = () => {
         if(user && crush){
@@ -33,7 +40,7 @@ const MaryPage = () => {
     }
 
     const handleConfetti = () => {
-        axios.post(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/couple`,{ person1:user, person2:crush })
+        addCouple.mutate({ person1: user, person2: user })
         confetti({
             particleCount: 100,
             spread: 100
